@@ -40,6 +40,7 @@ export const Perfil = () => {
 
   function handleAddToCart(plate: Plate){
     dispatch(adicionar(plate))
+    alert("item adicionado ao carrinho!")
   }
   function goToCart(){
     setPay(false)
