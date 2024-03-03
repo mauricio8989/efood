@@ -97,10 +97,10 @@ export const Perfil = () => {
             onclose={()=> setIsDishOpen(false)}
           />
       }
-      {cartOpen &&<Right><Cart onclick={goToAdress}/></Right>}
-      {adress && <Right><Delivery onPay={goToPay} onBackToCart={goToCart}/></Right>}
-      {pay && <Right><Pay onPay={goToOrderFinished} onBack={goToAdress}/></Right> }
-      {isFinished && <Right><Order backToHome={() =>navigate('/')}/></Right> }
+      {cartOpen &&<Right onclick={() => setCartOpen(false)}><Cart onclick={goToAdress}/></Right>}
+      {adress && <Right onclick={() => setAdress(false)}><Delivery onPay={goToPay} onBackToCart={goToCart}/></Right>}
+      {pay && <Right onclick={() => setPay(false)}><Pay onPay={goToOrderFinished} onBack={goToAdress}/></Right> }
+      {isFinished && <Right onclick={() => setIsFinished(false)}><Order backToHome={() =>navigate('/')}/></Right> }
       <Footer />
     </Container>
   )

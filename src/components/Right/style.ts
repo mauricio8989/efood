@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import { colors } from "../../style";
 export const Container = styled.div`
-  width: 100vw;
+  max-width: 100vw;
+  width: 100%;
   height: 100vh;
   background-color: rgba(0,0,0,0.8);
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
 `
