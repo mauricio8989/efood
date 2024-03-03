@@ -50,7 +50,7 @@ export const Button = styled.button`
 export const Description = styled.div`
   width: 100vw;
   height: 280px;
-  background-image: url('/src/assets/images/imagem de fundo.png');
+  background-image: url('https://i.ibb.co/sKDTxx3/imagem-de-fundo.png');
   margin-top: 60px;
   color: ${colors.begie};
   .container{
