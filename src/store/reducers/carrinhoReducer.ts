@@ -20,9 +20,16 @@ const carrinhoReducer = createSlice({
       }else{
         state.items.push(plate);
       }
+    },
+    remover: (state, action: PayloadAction<Plate>) => {
+      const ok = confirm("Deseja mesmo remover este item do carrinho?")
+      if(ok){
+        const plateId = action.payload.id
+        state.items = state.items.filter(item => item.id !== plateId)
+      }
     }
   }
 })
 
-export const {adicionar} = carrinhoReducer.actions;
+export const {adicionar, remover} = carrinhoReducer.actions;
 export default carrinhoReducer.reducer
