@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
 import { Button } from "../Button";
-import { Comfirm, Container, Plate, Price, Title, Trash, ValueToPay } from "./style"
+import { Comfirm, Container, PlateComponent, Price, Title, Trash, ValueToPay } from "./style"
 import { FaRegTrashAlt } from "react-icons/fa";
 import { RootReducer } from "../../store";
+import { Plate } from "../../models/plate";
 
 type Props = {
   onclick: () => void
@@ -10,20 +11,20 @@ type Props = {
 export const Cart = ({onclick}:Props) => {
   const itemsCart = useSelector((state: RootReducer) => state.carrinho.items)
 
-  const total: number = itemsCart.reduce((total: number, produto) => total + produto.value, 0);
+  const total: number = itemsCart.reduce((total: number, produto: Plate) => total + produto.value, 0);
   const precoTotal: string = total.toFixed(2).toString().replace('.', ',')
   return(
     <Container>
       {itemsCart &&
         itemsCart.map((plate) => (
-          <Plate key={plate.id}>
+          <PlateComponent key={plate.id}>
             <img src={plate.image} />
             <div>
               <Title>{plate.title}</Title>
               <Trash><FaRegTrashAlt /></Trash>
               <Price>R$ {plate.value}</Price>
             </div>
-          </Plate>
+          </PlateComponent>
           )
         )
       }

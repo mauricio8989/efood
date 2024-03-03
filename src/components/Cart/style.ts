@@ -8,7 +8,7 @@ export const Container= styled.ul`
   flex-direction: column;
   gap: 16px;
 `
-export const Plate = styled.li`
+export const PlateComponent = styled.li`
   padding: 8px 10px;
   display: flex;
   gap: 8px;
