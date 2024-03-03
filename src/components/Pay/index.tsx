@@ -9,14 +9,14 @@ export const Pay = ({onPay, onBack}:Props) => {
   return(
     <Container>
       <Title>Pagamento - Valor a pagar R$ <span>190,90</span></Title>
-      <Input required label="Nome no cartão"/>
+      <Input label="Nome no cartão"/>
       <NumberAndCvv>
-        <Input required label="Número do cartão"/>
-        <Input required label="CVV"/>
+        <Input label="Número do cartão"/>
+        <Input label="CVV"/>
       </NumberAndCvv>
       <CepNumber>
-        <Input required label="Mês de vencimento"/>
-        <Input required label="Ano de vencimento"/>
+        <Input label="Mês de vencimento"/>
+        <Input label="Ano de vencimento"/>
       </CepNumber>
       <Last>
         <Button onclick={onPay}>Finalizar pagamento</Button>

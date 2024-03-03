@@ -29,7 +29,7 @@ export const Cart = ({onclick}:Props) => {
       }
       <Comfirm>
         <ValueToPay> <span>Valor total</span>{precoTotal}</ValueToPay>
-        <Button onclick={onclick} type="button">Continuar com a entrega</Button>
+        <Button onclick={onclick} >Continuar com a entrega</Button>
       </Comfirm>
     </Container>
   )

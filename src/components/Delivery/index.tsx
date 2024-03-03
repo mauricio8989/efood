@@ -20,8 +20,8 @@ export const Delivery = ({onBackToCart, onPay}:Props) => {
       </CepNumber>
       <Input label="Complemento (opcional)"/>
       <Last>
-        <Button type="submit" onclick={onPay}>Continuar com o pagamento</Button>
-        <Button type="button" onclick={onBackToCart}>Voltar para o carrinho</Button>
+        <Button onclick={onPay}>Continuar com o pagamento</Button>
+        <Button onclick={onBackToCart}>Voltar para o carrinho</Button>
       </Last>
     </Container>
   )
