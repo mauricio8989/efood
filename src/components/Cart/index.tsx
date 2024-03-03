@@ -10,8 +10,8 @@ type Props = {
 export const Cart = ({onclick}:Props) => {
   const itemsCart = useSelector((state: RootReducer) => state.carrinho.items)
 
-  const total = itemsCart.reduce((total, produto) => total + produto.value, 0);
-  const precoTotal = total.toFixed(2).toString().replace('.', ',')
+  const total: number = itemsCart.reduce((total: number, produto) => total + produto.value, 0);
+  const precoTotal: string = total.toFixed(2).toString().replace('.', ',')
   return(
     <Container>
       {itemsCart &&
