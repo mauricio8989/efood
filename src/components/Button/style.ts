@@ -7,7 +7,6 @@ export const Container = styled.button`
   padding: 6px 0;
   margin-top: 16px;
   border: 2px solid ${colors.begie};
-  border-radius: 8px;
   color: ${colors.salmon};
   font-weight: 700;
   cursor: pointer;

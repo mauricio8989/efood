@@ -48,9 +48,12 @@ export const Button = styled.button`
   font-weight: bold;
 `
 export const Description = styled.div`
-  width: 100vw;
+  max-width: 100vw;
+  width: 100%;
   height: 280px;
   background-image: url('https://i.ibb.co/sKDTxx3/imagem-de-fundo.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
   margin-top: 60px;
   color: ${colors.begie};
   .container{

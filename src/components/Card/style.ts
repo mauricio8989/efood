@@ -8,8 +8,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  div {
-    border-radius: 0 0 8px 8px;
+  div:nth-child(3) {
     border: 1px solid ${colors.salmon};
     border-top: none;
     padding: 8px;
@@ -22,7 +21,6 @@ export const Container = styled.div`
       border: 2px solid ${colors.salmon};
       font-weight: 700;
       transition: 200ms ease;
-      border-radius: 8px;
       line-height: 18px;
       :hover {
         cursor: pointer;
@@ -33,7 +31,6 @@ export const Container = styled.div`
   }
 
   img {
-    border-radius: 8px 8px 0 0;
     height: 218px;
   }
 `
@@ -44,7 +41,6 @@ export const Title = styled.h3`
   font-weight: 700;
   display: flex;
   justify-content: space-between;
-  margin-top: 8px;
   span {
     svg {
       color: ${colors.yellow};
@@ -59,9 +55,15 @@ export const Description = styled.p`
 export const Tag = styled.span`
   background-color: ${colors.salmon};
   color: ${colors.begie};
+
+  padding: 8px 12px;
+`
+export const ContainerTags = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
   position: absolute;
   top: 16px;
   right: 16px;
-  border-radius: 8px;
-  padding: 8px 12px;
+  padding: 0;
 `

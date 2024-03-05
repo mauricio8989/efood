@@ -7,7 +7,7 @@ import logo from '../../assets/images/logo.svg'
 const restaurants = [
   {
     id: 1,
-    tag: 'italiana',
+    tags: ['Destaque da semana','italiana'],
     image: 'https://s2-casaejardim.glbimg.com/XX096G6-JjB-CJuBRqmxpcZBSg4=/0x0:1200x724/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_a0b7e59562ef42049f4e191fe476fe7d/internal_photos/bs/2023/A/Y/Qv2aleQFAYE6ZumGjI0g/2022-02-18-nonna-rosa-5.jpeg',
     title: 'La Dolce Vita Trattoria',
     note: '4.6',
@@ -17,7 +17,7 @@ const restaurants = [
   },
   {
     id: 2,
-    tag: 'brasileira',
+    tags: ['brasileira'],
     image: 'https://vejasp.abril.com.br/wp-content/uploads/2016/11/img_1588.jpeg?quality=70&strip=info',
     title: 'Fogo de Chão',
     note: '4.6',
@@ -27,7 +27,7 @@ const restaurants = [
   },
   {
     id: 3,
-    tag: 'portuguesa',
+    tags: ['portuguesa'],
     image: 'https://hardecor.com.br/wp-content/uploads/2018/03/avillez-belcanto-Copy.jpg',
     title: 'Português: Belcanto',
     note: '4.6',
@@ -37,7 +37,7 @@ const restaurants = [
   },
   {
     id: 4,
-    tag: 'mexicana',
+    tags: ['mexicana'],
     image: 'https://images.squarespace-cdn.com/content/v1/63bcee2d8ab2cd47fb1169cf/1673326300437-RY2AOM8P5HIDF351ALYP/Screen+Shot+2022-11-17+at+9.55.45+PM.png',
     title: 'Mexicano: Pujol',
     note: '4.6',
@@ -60,9 +60,9 @@ export const Home = () => {
         {restaurants.map((restaurant) => (
           <Card
             key={restaurant.id}
-            food={restaurant.tag}
+            food={restaurant.tags.length > 1 ? restaurant.tags.slice(1): restaurant.tags}
             image={restaurant.image}
-            tag={restaurant.tag}
+            tags={restaurant.tags}
             note={restaurant.note}
             title={restaurant.title}
             description={restaurant.description}

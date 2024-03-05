@@ -14,7 +14,6 @@ export const Container = styled.div`
   justify-content: center;
 `
 export const Card = styled.div`
-  border-radius: 8px;
   height: 344px;
   max-width: 1024px;
   width: 100%;
@@ -28,7 +27,6 @@ export const Card = styled.div`
     width: 280px;
     height: 280px;
     object-fit: cover;
-    border-radius: 8px;
   }
   >div{
     >div{
@@ -65,6 +63,5 @@ export const ButtonClose = styled.button`
   padding: 4px 6px 0 6px;
   :hover{
     border-color: ${colors.begie};
-    border-radius: 8px;
   }
 `

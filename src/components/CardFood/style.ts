@@ -5,13 +5,11 @@ export const Container = styled.div`
   width: 320px;
   padding: 8px;
   background-color: ${colors.salmon};
-  border-radius: 8px;
   display: grid;
   gap: 8px;
   img {
     width: 100%;
     max-height: 167px;
-    border-radius: 8px 8px 0 0;
   }
 `
 export const Title = styled.h3`
@@ -34,7 +32,6 @@ export const Button = styled.button`
   border: 2px solid ${colors.begie};
   font-weight: 700;
   transition: 200ms ease;
-  border-radius: 8px;
   :hover {
     cursor: pointer;
     color: ${colors.begie};

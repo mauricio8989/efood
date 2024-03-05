@@ -13,7 +13,6 @@ export const PlateComponent = styled.li`
   display: flex;
   gap: 8px;
   background-color: ${colors.begie};
-  border-radius: 8px;
   position: relative;
   img{
     width: 80px;

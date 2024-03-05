@@ -16,7 +16,6 @@ export const InputContainer = styled.input`
   margin-top: 6px;
   color: #000;
   background-color: ${colors.begie};
-  border-radius: 8px;
   padding: 8px;
   border: transparent;
   font-weight: bold;
