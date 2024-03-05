@@ -57,7 +57,7 @@ const initialState: ProductState = {
       image: 'https://s2.glbimg.com/QlcUlR-Auf0vPooPkkqbvfBll9Y=/e.glbimg.com/og/ed/f/original/2018/04/04/receita-de-polvo-grelhado-com-pure-de-batata-rustico.jpg',
       title: 'Polvo grelhado',
       description: `
-        Polvo marinado e grelhado até ficar macio e saboroso. Um prato perfeito para o verão.
+        Polvo marinado e grelhado até ficar macio e saboroso. Um prato perfeito para o verão Um prato perfeito para o verão.
           `,
       value: 79.89
     },
