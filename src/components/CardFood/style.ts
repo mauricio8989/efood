@@ -16,7 +16,6 @@ export const Title = styled.h3`
   font-size: 18px;
   line-height: 22px;
   font-weight: 700;
-  margin-top: 8px;
   color: ${colors.begie};
 `
 export const Description = styled.p`
