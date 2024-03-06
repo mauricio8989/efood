@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { CardFood } from '../../components/CardFood'
 import { Footer } from '../../components/Footer'
 import { Header } from '../../components/Header'
@@ -15,7 +15,6 @@ import { Cart } from '../../components/Cart'
 import { Delivery } from '../../components/Delivery'
 import { Pay } from '../../components/Pay'
 import { Order } from '../../components/Order'
-import { useNavigate, useParams } from 'react-router-dom'
 
 
 export const Perfil = () => {
@@ -59,6 +58,7 @@ export const Perfil = () => {
   }
   function goToOrderFinished(){
     setIsFinished(true)
+    setPay(false)
   }
 
   return (

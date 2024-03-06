@@ -10,19 +10,19 @@ export const Container = styled.div`
     padding-bottom: 0;
     .links {
       width: 100%;
-      display: flex;
-      justify-content: space-between;
       .container {
-        padding: 0;
+        display: flex;
         align-items: center;
+        justify-content: space-between;
+        padding: 0;
         img {
           margin: 0 auto;
-          text-align: center;
+
         }
       }
       a {
+        width: fit-content;
         color: ${colors.salmon};
-        text-align: left;
       }
     }
     :nth-child(2) {
@@ -40,10 +40,10 @@ export const Container = styled.div`
   }
 `
 export const Button = styled.button`
+  width: fit-content;
   background-color: transparent;
   border: transparent;
   cursor: pointer;
-  text-align: end;
   color: ${colors.salmon};
   font-weight: bold;
 `

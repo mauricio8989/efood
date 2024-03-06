@@ -55,8 +55,10 @@ export const Description = styled.p`
 export const Tag = styled.span`
   background-color: ${colors.salmon};
   color: ${colors.begie};
-
-  padding: 8px 12px;
+  padding: 6px;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 14px;
 `
 export const ContainerTags = styled.div`
   display: flex;

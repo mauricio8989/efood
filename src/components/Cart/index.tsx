@@ -5,6 +5,7 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { RootReducer } from "../../store";
 import { Plate } from "../../models/plate";
 import { remover } from '../../store/reducers/carrinhoReducer'
+import FormatPrice from "../../utils/FormatPrice";
 
 
 type Props = {
@@ -16,7 +17,7 @@ export const Cart = ({onclick}:Props) => {
   const dispatch = useDispatch()
 
   const total: number = itemsCart.reduce((total: number, produto: Plate) => total + produto.value, 0);
-  const precoTotal: string = total.toFixed(2).toString().replace('.', ',')
+
   return(
     <Container>
       {itemsCart &&
@@ -26,14 +27,14 @@ export const Cart = ({onclick}:Props) => {
             <div>
               <Title>{plate.title}</Title>
               <Trash onClick={() => dispatch(remover(plate))}><FaRegTrashAlt /></Trash>
-              <Price>R$ {plate.value}</Price>
+              <Price>{FormatPrice(plate.value)}</Price>
             </div>
           </PlateComponent>
           )
         )
       }
       <Comfirm>
-        <ValueToPay> <span>Valor total</span>{precoTotal}</ValueToPay>
+        <ValueToPay> <span>Valor total</span>{FormatPrice(total)}</ValueToPay>
         <Button onclick={onclick} >Continuar com a entrega</Button>
       </Comfirm>
     </Container>
