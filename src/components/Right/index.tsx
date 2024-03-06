@@ -7,7 +7,8 @@ type Props ={
 
 export const Right = ({ onclick, children}:Props) => {
   return(
-    <Container onClick={onclick}>
+    <Container>
+      <div onClick={onclick}></div>
       <Component>{children}</Component>
     </Container>
   )

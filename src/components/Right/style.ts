@@ -8,6 +8,8 @@ export const Container = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  display: grid;
+  grid-template-columns: calc(100% -360px) 360px;
 `
 export const Component = styled.div`
   width: 360px;

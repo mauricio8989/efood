@@ -43,6 +43,7 @@ export const Button = styled.button`
   cursor: pointer;
   color: ${colors.salmon};
   font-weight: bold;
+  line-height: 22px;
 `
 export const Description = styled.div`
   max-width: 100vw;
@@ -59,10 +60,10 @@ export const Description = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
  }
  span, h3{
   width: fit-content;
+  line-height: 38px;
  }
   span{
     font-size: 32px;

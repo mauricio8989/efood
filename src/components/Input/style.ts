@@ -5,6 +5,7 @@ export const Container = styled.div`
   margin-bottom: 8px;
   font-size: 14px;
   font-weight: bold;
+  margin-bottom: 8px;
 `
 export const Label = styled.label`
   color: ${colors.begie};
@@ -12,8 +13,7 @@ export const Label = styled.label`
 `
 export const InputContainer = styled.input`
   width: 100%;
-  margin-bottom: 8px;
-  margin-top: 6px;
+  margin-top: 8px;
   color: #000;
   background-color: ${colors.begie};
   padding: 8px;
