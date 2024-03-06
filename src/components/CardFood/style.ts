@@ -22,6 +22,8 @@ export const Description = styled.p`
   font-size: 14px;
   line-height: 22px;
   color: ${colors.begie};
+  max-height: 90px;
+      overflow: hidden;
 `
 export const Button = styled.button`
   padding: 4px 6px;

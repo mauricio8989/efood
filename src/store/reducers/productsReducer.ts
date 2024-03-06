@@ -12,7 +12,7 @@ const initialState: ProductState = {
       image: 'https://beniniedonato.com.br/wp-content/uploads/2022/04/bife-florentino.jpg',
       title: 'Bife à Fiorentina',
       description: `
-        Um corte alto de filé mignon grelhado à perfeição, temperado apenas com sal e pimenta. Um clássico da Toscana.
+        A pizza Margherita é uma pizza clássica da culinária italiana, reconhecida por sua simplicidade e sabor inigualável. Ela é feita com uma base de massa fina e crocante, coberta com molho de tomate fresco, queijo mussarela de alta qualidade, manjericão fresco e azeite de oliva extra-virgem. A combinação de sabores é perfeita, com o molho de tomate suculento e ligeiramente ácido, o queijo derretido e cremoso e as folhas de manjericão frescas, que adicionam um toque de sabor herbáceo. É uma pizza simples, mas deliciosa, que agrada a todos os paladares e é uma ótima opção para qualquer ocasião.
           `,
       value: 69.89
     },
@@ -21,7 +21,7 @@ const initialState: ProductState = {
       image: 'https://ogimg.infoglobo.com.br/in/22111928-630-f16/FT1086A/760/FiammettaSpaghetti-Negro-Tinta-de-LulaCredito-Rodrig-Azevedo-3.jpeg.jpg',
       title: 'Espaguete com tinta de lula',
       description: `
-        Espaguete negro cozido e envolvido em um molho saboroso feito com tinta de lula, frutos do mar e tomate. Um prato elegante e delicioso.
+        A pizza Margherita é uma pizza clássica da culinária italiana, reconhecida por sua simplicidade e sabor inigualável. Ela é feita com uma base de massa fina e crocante, coberta com molho de tomate fresco, queijo mussarela de alta qualidade, manjericão fresco e azeite de oliva extra-virgem. A combinação de sabores é perfeita, com o molho de tomate suculento e ligeiramente ácido, o queijo derretido e cremoso e as folhas de manjericão frescas, que adicionam um toque de sabor herbáceo. É uma pizza simples, mas deliciosa, que agrada a todos os paladares e é uma ótima opção para qualquer ocasião.
           `,
       value: 38.89
     },
@@ -30,7 +30,7 @@ const initialState: ProductState = {
       image: 'https://img.freepik.com/fotos-premium/risoto-com-tinta-de-lula-e-lula-amassada_136960-196.jpg',
       title: 'Risoto com tinta de lula',
       description: `
-        Arroz cremoso cozido com tinta de lula, caldo de frutos do mar e queijo parmesão. Uma alternativa saborosa ao risoto tradicional.
+        A pizza Margherita é uma pizza clássica da culinária italiana, reconhecida por sua simplicidade e sabor inigualável. Ela é feita com uma base de massa fina e crocante, coberta com molho de tomate fresco, queijo mussarela de alta qualidade, manjericão fresco e azeite de oliva extra-virgem. A combinação de sabores é perfeita, com o molho de tomate suculento e ligeiramente ácido, o queijo derretido e cremoso e as folhas de manjericão frescas, que adicionam um toque de sabor herbáceo. É uma pizza simples, mas deliciosa, que agrada a todos os paladares e é uma ótima opção para qualquer ocasião.
           `,
       value: 59.99
     },
@@ -39,7 +39,7 @@ const initialState: ProductState = {
       image: 'https://www.recetin.com/wp-content/uploads/2021/10/mas-modi-8-min.jpg',
       title: 'Sépia com ervilhas',
       description: `
-        Sépia cozida em um molho de tomate com ervilhas, cebola e alho. Um prato simples e saboroso.
+        A pizza Margherita é uma pizza clássica da culinária italiana, reconhecida por sua simplicidade e sabor inigualável. Ela é feita com uma base de massa fina e crocante, coberta com molho de tomate fresco, queijo mussarela de alta qualidade, manjericão fresco e azeite de oliva extra-virgem. A combinação de sabores é perfeita, com o molho de tomate suculento e ligeiramente ácido, o queijo derretido e cremoso e as folhas de manjericão frescas, que adicionam um toque de sabor herbáceo. É uma pizza simples, mas deliciosa, que agrada a todos os paladares e é uma ótima opção para qualquer ocasião.
           `,
       value: 28.89
     },
@@ -48,7 +48,7 @@ const initialState: ProductState = {
       image: 'https://revistamenu.com.br/wp-content/uploads/sites/24/2020/03/kiaora_lula-1.jpg',
       title: 'Lulas fritas',
       description: `
-        Lulas empanadas e fritas até dourar. Um aperitivo popular ou acompanhamento para outros pratos.
+        A pizza Margherita é uma pizza clássica da culinária italiana, reconhecida por sua simplicidade e sabor inigualável. Ela é feita com uma base de massa fina e crocante, coberta com molho de tomate fresco, queijo mussarela de alta qualidade, manjericão fresco e azeite de oliva extra-virgem. A combinação de sabores é perfeita, com o molho de tomate suculento e ligeiramente ácido, o queijo derretido e cremoso e as folhas de manjericão frescas, que adicionam um toque de sabor herbáceo. É uma pizza simples, mas deliciosa, que agrada a todos os paladares e é uma ótima opção para qualquer ocasião.
           `,
       value: 19.89
     },
@@ -57,7 +57,7 @@ const initialState: ProductState = {
       image: 'https://s2.glbimg.com/QlcUlR-Auf0vPooPkkqbvfBll9Y=/e.glbimg.com/og/ed/f/original/2018/04/04/receita-de-polvo-grelhado-com-pure-de-batata-rustico.jpg',
       title: 'Polvo grelhado',
       description: `
-        Polvo marinado e grelhado até ficar macio e saboroso. Um prato perfeito para o verão Um prato perfeito para o verão.
+        A pizza Margherita é uma pizza clássica da culinária italiana, reconhecida por sua simplicidade e sabor inigualável. Ela é feita com uma base de massa fina e crocante, coberta com molho de tomate fresco, queijo mussarela de alta qualidade, manjericão fresco e azeite de oliva extra-virgem. A combinação de sabores é perfeita, com o molho de tomate suculento e ligeiramente ácido, o queijo derretido e cremoso e as folhas de manjericão frescas, que adicionam um toque de sabor herbáceo. É uma pizza simples, mas deliciosa, que agrada a todos os paladares e é uma ótima opção para qualquer ocasião.
           `,
       value: 79.89
     },

@@ -13,10 +13,9 @@ export const HeaderContainer = styled.header`
   flex-direction: column;
   color: ${colors.salmon};
   position: relative;
-  img {
-    margin-bottom: 138px;
-  }
+  gap: 138px;
   h1 {
+    /* margin-top: 138px; */
     font-size: 36px;
     line-height: 46px;
     width: 540px;

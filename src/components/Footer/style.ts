@@ -7,14 +7,12 @@ export const Container = styled.footer`
   display: flex;
   flex-direction: column;
   align-items: center;
-  img {
-    margin-bottom: 32px;
-  }
 `
 export const Sotials = styled.ul`
   display: flex;
   gap: 8px;
-  margin-bottom: 80px;
+  margin: 32px 0 80px 0;
+
 `
 export const Link = styled.a`
   text-decoration: none;

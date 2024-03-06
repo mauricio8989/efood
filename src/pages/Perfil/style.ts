@@ -8,6 +8,7 @@ export const Container = styled.div`
     font-size: 18px;
     font-weight: 900;
     padding-bottom: 0;
+    gap: 0;
     .links {
       width: 100%;
       .container {
@@ -15,10 +16,6 @@ export const Container = styled.div`
         align-items: center;
         justify-content: space-between;
         padding: 0;
-        img {
-          margin: 0 auto;
-
-        }
       }
       a {
         width: fit-content;
@@ -63,6 +60,9 @@ export const Description = styled.div`
     flex-direction: column;
     justify-content: space-between;
 
+ }
+ span, h3{
+  width: fit-content;
  }
   span{
     font-size: 32px;

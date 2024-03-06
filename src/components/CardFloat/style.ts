@@ -34,10 +34,11 @@ export const Card = styled.div`
     }
     span, p{
       font-size: 14px;
+      line-height: 22px;
     }
     p{
       margin: 16px 0;
-    };
+    }
   }
   animation: fadein 500ms;
   @keyframes fadein{
@@ -53,15 +54,11 @@ export const Card = styled.div`
 `
 export const ButtonClose = styled.button`
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 8px;
+  right: 8px;
   background-color: transparent;
   border: 1px solid transparent;
   color: ${colors.begie};
   font-size: 24px;
   cursor: pointer;
-  padding: 4px 6px 0 6px;
-  :hover{
-    border-color: ${colors.begie};
-  }
 `
