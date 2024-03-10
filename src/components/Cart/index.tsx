@@ -16,18 +16,18 @@ export const Cart = ({onclick}:Props) => {
 
   const dispatch = useDispatch()
 
-  const total: number = itemsCart.reduce((total: number, produto: Plate) => total + produto.value, 0);
+  const total: number = itemsCart.reduce((total: number, produto: Plate) => total + produto.preco, 0);
 
   return(
     <Container>
       {itemsCart &&
         itemsCart.map((plate) => (
           <PlateComponent key={plate.id}>
-            <img src={plate.image} />
+            <img src={plate.foto} />
             <div>
-              <Title>{plate.title}</Title>
+              <Title>{plate.nome}</Title>
               <Trash onClick={() => dispatch(remover(plate))}><FaRegTrashAlt /></Trash>
-              <Price>{FormatPrice(plate.value)}</Price>
+              <Price>{FormatPrice(plate.preco)}</Price>
             </div>
           </PlateComponent>
           )

@@ -49,17 +49,19 @@ export const Description = styled.div`
   max-width: 100vw;
   width: 100%;
   height: 280px;
-  background-image: url('https://i.ibb.co/sKDTxx3/imagem-de-fundo.png');
   background-repeat: no-repeat;
   background-size: 100%;
   margin-top: 60px;
   color: ${colors.begie};
+  position: relative;
   .container{
     padding: 24px;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
+    z-index: 1;
  }
  span, h3{
   width: fit-content;
@@ -68,5 +70,14 @@ export const Description = styled.div`
   span{
     font-size: 32px;
     font-weight: 100;
+  }
+  &::after{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+    content: '';
   }
 `

@@ -3,31 +3,37 @@ import { Container, Title, Description, Tag, ContainerTags } from './style'
 import { FaStar } from 'react-icons/fa'
 
 export type Props = {
-  tags: string[]
-  image: string
-  title: string
-  note: string
+  id: number
+  capa: string
+  titulo: string
+  avaliacao: number
   description: string
-  food: string[] | string
+  tipo: string
+  destacado: boolean
 }
 
-export const Card = ({ tags, image, title, note, description, food }: Props) => {
+export const Card = ({ id, destacado, capa, titulo, avaliacao, description, tipo}: Props) => {
+  function formatDescription(description: string){
+    if(description.length < 234) return description
+    return (description.slice(0, 234) + '...')
+  }
   return (
     <Container>
       <ContainerTags>
-        {tags.map(tag => <Tag key={tag}>{tag}</Tag>)}
+        {destacado && <Tag>Em destaque</Tag> }
+        <Tag>{tipo}</Tag>
       </ContainerTags>
-      <img src={image} />
+      <img src={capa} />
       <div>
         <Title>
           {' '}
-          {title}{' '}
+          {titulo}{' '}
           <span>
-            {note} <FaStar />
+            {avaliacao} <FaStar />
           </span>
         </Title>
-        <Description>{description}</Description>
-        <Link to={`/perfil/${food[0]}`}>Saiba mais</Link>
+        <Description>{formatDescription(description)}</Description>
+        <Link to={`/perfil/${id}`}>Saiba mais</Link>
       </div>
     </Container>
   )

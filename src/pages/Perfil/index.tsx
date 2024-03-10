@@ -4,25 +4,25 @@ import { Footer } from '../../components/Footer'
 import { Header } from '../../components/Header'
 import { Button, Container, Description } from './style'
 import logo from '../../assets/images/logo.svg'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { CardFloat } from '../../components/CardFloat'
 import { RootReducer } from '../../store'
 import { useDispatch, useSelector } from 'react-redux'
 import { adicionar } from '../../store/reducers/carrinhoReducer'
-import { Plate } from '../../models/plate'
 import { Right } from '../../components/Right'
 import { Cart } from '../../components/Cart'
 import { Delivery } from '../../components/Delivery'
 import { Pay } from '../../components/Pay'
 import { Order } from '../../components/Order'
+import { Plate } from '../../models/plate'
+import { Restaurant } from '../Home/Home'
 
 
 export const Perfil = () => {
-  const items = useSelector((state: RootReducer) => state.products.items)
   const itemsCart = useSelector((state: RootReducer) => state.carrinho.items)
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const {restaurant} = useParams()
+  const {id} = useParams()
 
 
   const [isDisheOpen, setIsDishOpen] = useState(false)
@@ -30,6 +30,7 @@ export const Perfil = () => {
   const [adress, setAdress ] = useState(false)
   const [pay, setPay] = useState(false)
   const [isFinished, setIsFinished] = useState(false)
+  const [restaurant, setRestaurant] = useState<Restaurant>()
   const [plate, setPlate] = useState<Plate>()
 
   function handleClick(item: Plate){
@@ -61,6 +62,11 @@ export const Perfil = () => {
     setPay(false)
   }
 
+  useEffect(() =>{
+    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
+      .then(res => res.json())
+      .then(res => setRestaurant(res))
+  },[id])
   return (
     <Container>
       <Header>
@@ -73,19 +79,19 @@ export const Perfil = () => {
             </Button>
           </div>
         </div>
-        <Description>
+        <Description style={{backgroundImage: `url(${restaurant?.capa})`}}>
           <div className="container">
-            <span>{restaurant}</span>
-            <h3>La Dolce Vita Trattoria</h3>
+            <span>{restaurant?.tipo}</span>
+            <h3>{restaurant?.titulo}</h3>
           </div>
         </Description>
       </Header>
       <div className="container">
-        {items && items.map(item =>(
+        {restaurant && restaurant.cardapio.map(plate =>(
           <CardFood
-            key={item.id}
-            plate={item}
-            onclick={() => handleClick(item)}
+            key={plate.id}
+            plate={plate}
+            onclick={() => handleClick(plate)}
           />
         ))}
       </div>

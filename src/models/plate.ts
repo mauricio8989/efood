@@ -1,15 +1,17 @@
 export class Plate{
   id: number
-  image: string
-  title: string
-  description: string
-  value: number
+  foto: string
+  preco: number
+  nome: string
+  descricao: string
+  porcao: string
 
-  constructor(id: number, image: string, title: string, description: string, value: number) {
+  constructor(id: number, foto: string, nome: string, descricao: string, preco: number, porcao: string) {
     this.id = id;
-    this.image = image;
-    this.title = title;
-    this.description = description;
-    this.value = value;
+    this.foto = foto;
+    this.nome = nome;
+    this.descricao = descricao;
+    this.porcao = porcao;
+    this.preco = preco;
   }
 }

@@ -10,6 +10,7 @@ export const Container = styled.div`
   left: 0;
   display: grid;
   grid-template-columns: calc(100% -360px) 360px;
+  z-index: 1;
 `
 export const Component = styled.div`
   width: 360px;

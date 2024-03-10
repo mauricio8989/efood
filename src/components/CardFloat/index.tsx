@@ -15,14 +15,14 @@ export const CardFloat = ({ plate, AddCart, onclose}:Props) =>{
     <Container>
       <Card>
         <ButtonClose onClick={onclose}><IoClose /></ButtonClose>
-        <img src={plate.image} alt="pizza" />
+        <img src={plate.foto} alt="pizza" />
         <div>
           <div>
-            <Title>{plate.title}</Title>
-            <p>{plate.description}</p>
-            <span>Serve: de 2 a 3 pessoas</span>
+            <Title>{plate.nome}</Title>
+            <p>{plate.descricao}</p>
+            <span>Serve de {plate.porcao}</span>
           </div>
-          <Button onClick={AddCart}>Adicionar ao carrinho - {FormatPrice(plate.value)}</Button>
+          <Button onClick={AddCart}>Adicionar ao carrinho - {FormatPrice(plate.preco)}</Button>
         </div>
       </Card>
     </Container>
