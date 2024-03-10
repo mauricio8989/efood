@@ -46,7 +46,6 @@ export const Home = () => {
             avaliacao={restaurant.avaliacao}
             titulo={restaurant.titulo}
             description={restaurant.descricao}
-            perfil={restaurant.tipo}
           />
         ))}
       </Container>
