@@ -3,7 +3,6 @@ import { Button } from "../Button";
 import { Comfirm, Container, PlateComponent, Price, Title, Trash, ValueToPay } from "./style"
 import { FaRegTrashAlt } from "react-icons/fa";
 import { RootReducer } from "../../store";
-import { Plate } from "../../models/plate";
 import { remover } from '../../store/reducers/carrinhoReducer'
 import FormatPrice from "../../utils/FormatPrice";
 
@@ -16,7 +15,9 @@ export const Cart = ({onclick}:Props) => {
 
   const dispatch = useDispatch()
 
-  const total: number = itemsCart.reduce((total: number, produto: Plate) => total + produto.preco, 0);
+  const total: number = itemsCart.reduce((acumulator, currentValue) => {
+    return (acumulator += currentValue.preco)
+  },0);
 
   return(
     <Container>

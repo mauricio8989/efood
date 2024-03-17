@@ -3,8 +3,8 @@ import { Footer } from '../../components/Footer'
 import { Header } from '../../components/Header'
 import { Container } from './style'
 import logo from '../../assets/images/logo.svg'
-import { useEffect, useState } from 'react'
 import { Plate } from '../../models/plate'
+import { useGetRestaurantsQuery } from '../../services/api'
 
 export type Restaurant = {
   id: number
@@ -20,13 +20,8 @@ export type Restaurant = {
 
 
 export const Home = () => {
-  const [restaurants, setRestaurants] = useState<Restaurant[]>([])
+  const {data: restaurants} = useGetRestaurantsQuery()
 
-  useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
-      .then(res => res.json())
-      .then(res => setRestaurants(res))
-  },[])
   return (
     <>
       <Header>
@@ -36,7 +31,7 @@ export const Home = () => {
         </div>
       </Header>
       <Container className="container">
-        {restaurants.map((restaurant) => (
+        {restaurants && restaurants.map((restaurant) => (
           <Card
             key={restaurant.id}
             id={restaurant.id}

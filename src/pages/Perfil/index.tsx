@@ -4,7 +4,6 @@ import { Footer } from '../../components/Footer'
 import { Header } from '../../components/Header'
 import { Button, Container, Description } from './style'
 import logo from '../../assets/images/logo.svg'
-import { useEffect, useState } from 'react'
 import { CardFloat } from '../../components/CardFloat'
 import { RootReducer } from '../../store'
 import { useDispatch, useSelector } from 'react-redux'
@@ -15,14 +14,16 @@ import { Delivery } from '../../components/Delivery'
 import { Pay } from '../../components/Pay'
 import { Order } from '../../components/Order'
 import { Plate } from '../../models/plate'
-import { Restaurant } from '../Home/Home'
+import { useGetRestaurantQuery } from '../../services/api'
+import { useState } from 'react'
 
 
 export const Perfil = () => {
+  const {id} = useParams()
+  const { data: restaurant} = useGetRestaurantQuery(id!)
   const itemsCart = useSelector((state: RootReducer) => state.carrinho.items)
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const {id} = useParams()
 
 
   const [isDisheOpen, setIsDishOpen] = useState(false)
@@ -30,17 +31,11 @@ export const Perfil = () => {
   const [adress, setAdress ] = useState(false)
   const [pay, setPay] = useState(false)
   const [isFinished, setIsFinished] = useState(false)
-  const [restaurant, setRestaurant] = useState<Restaurant>()
   const [plate, setPlate] = useState<Plate>()
 
   function handleClick(item: Plate){
     setIsDishOpen(true)
     setPlate(item)
-  }
-
-  function handleAddToCart(plate: Plate){
-    dispatch(adicionar(plate))
-    alert("item adicionado ao carrinho!")
   }
   function goToCart(){
     setPay(false)
@@ -62,11 +57,6 @@ export const Perfil = () => {
     setPay(false)
   }
 
-  useEffect(() =>{
-    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
-      .then(res => res.json())
-      .then(res => setRestaurant(res))
-  },[id])
   return (
     <Container>
       <Header>
@@ -99,7 +89,7 @@ export const Perfil = () => {
         plate &&
           <CardFloat
             plate={plate}
-            AddCart={() => handleAddToCart(plate)}
+            AddCart={() => dispatch(adicionar(plate))}
             onclose={()=> setIsDishOpen(false)}
           />
       }
