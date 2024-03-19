@@ -19,7 +19,6 @@ const carrinhoReducer = createSlice({
         alert("este itrem já está no carrinho!");
       }else{
         state.items.push(plate);
-        alert("O item foi adicionado ao carrinho!")
       }
     },
     remover: (state, action: PayloadAction<Plate>) => {

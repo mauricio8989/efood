@@ -17,8 +17,6 @@ export type Restaurant = {
   cardapio: Plate[]
 }
 
-
-
 export const Home = () => {
   const {data: restaurants} = useGetRestaurantsQuery()
 

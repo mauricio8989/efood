@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { colors } from '../../style'
 
 export const Container = styled.div`
-  width: 320px;
+  width: 100%;
   padding: 8px;
   background-color: ${colors.salmon};
   display: grid;

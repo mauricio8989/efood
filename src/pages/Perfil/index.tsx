@@ -89,8 +89,14 @@ export const Perfil = () => {
         plate &&
           <CardFloat
             plate={plate}
-            AddCart={() => dispatch(adicionar(plate))}
-            onclose={()=> setIsDishOpen(false)}
+            AddCart={() => {
+              dispatch(adicionar(plate))
+              setIsDishOpen(false)
+              goToCart()
+
+            }}
+            onclose={()=> setIsDishOpen(false)
+            }
           />
       }
       {cartOpen &&<Right onclick={() => setCartOpen(false)}><Cart onclick={goToAdress}/></Right>}

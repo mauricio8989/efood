@@ -33,7 +33,7 @@ export const Container = styled.div`
   .container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    row-gap: 32px;
+    gap: 32px;
   }
 `
 export const Button = styled.button`
@@ -55,7 +55,7 @@ export const Description = styled.div`
   color: ${colors.begie};
   position: relative;
   .container{
-    padding: 24px;
+    padding: 24px 0;
     height: 100%;
     display: flex;
     flex-direction: column;
