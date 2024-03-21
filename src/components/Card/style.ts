@@ -14,7 +14,17 @@ export const Container = styled.div`
     padding: 8px;
     height: 100%;
     a {
-      padding: 4px 6px;
+
+    }
+  }
+
+  img {
+    height: 218px;
+    object-fit: cover;
+  }
+`
+export const LinkToPlates = styled.button`
+  padding: 4px 6px;
       font-size: 14px;
       background-color: ${colors.salmon};
       color: ${colors.begie};
@@ -27,13 +37,6 @@ export const Container = styled.div`
         color: ${colors.salmon};
         background-color: transparent;
       }
-    }
-  }
-
-  img {
-    height: 218px;
-    object-fit: cover;
-  }
 `
 
 export const Title = styled.h3`

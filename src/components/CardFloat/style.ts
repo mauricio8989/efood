@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { colors } from "../../style";
+import { Button } from "../CardFood/style"
+
 
 export const Container = styled.div`
   width: 100vw;
@@ -29,6 +31,12 @@ export const Card = styled.div`
     object-fit: cover;
   }
   >div{
+    position: relative;
+    ${Button}{
+      position: absolute;
+      bottom: 24px;
+      left: 0px;
+    }
     >div{
       margin-bottom: 16px;
     }

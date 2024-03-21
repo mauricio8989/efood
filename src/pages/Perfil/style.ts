@@ -64,11 +64,11 @@ export const Description = styled.div`
     z-index: 1;
  }
  span, h3{
+  font-size: 32px;
   width: fit-content;
   line-height: 38px;
  }
   span{
-    font-size: 32px;
     font-weight: 100;
   }
   &::after{

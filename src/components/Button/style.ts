@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { colors } from "../../style";
 
 export const Container = styled.button`
-   width: 100%;
+  width: 100%;
   background-color: ${colors.begie};
   padding: 6px 0;
   margin-top: 16px;

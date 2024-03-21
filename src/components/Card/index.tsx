@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom'
-import { Container, Title, Description, Tag, ContainerTags } from './style'
+import { useNavigate } from 'react-router-dom'
+import { Container, Title, Description, Tag, ContainerTags, LinkToPlates } from './style'
 import { FaStar } from 'react-icons/fa'
 
 export type Props = {
@@ -13,10 +13,16 @@ export type Props = {
 }
 
 export const Card = ({ id, destacado, capa, titulo, avaliacao, description, tipo}: Props) => {
+  const navigate = useNavigate()
+
   function formatDescription(description: string){
     if(description.length < 234) return description
     return (description.slice(0, 234) + '...')
   }
+  function handleClick(){
+    navigate(`/perfil/${id}`)
+  }
+
   return (
     <Container>
       <ContainerTags>
@@ -33,7 +39,7 @@ export const Card = ({ id, destacado, capa, titulo, avaliacao, description, tipo
           </span>
         </Title>
         <Description>{formatDescription(description)}</Description>
-        <Link to={`/perfil/${id}`}>Saiba mais</Link>
+        <LinkToPlates onClick={handleClick}>Saiba mais</LinkToPlates>
       </div>
     </Container>
   )
