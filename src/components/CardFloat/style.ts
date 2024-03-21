@@ -21,7 +21,7 @@ export const Card = styled.div`
   width: 100%;
   padding: 32px;
   background-color: ${colors.salmon};
-  color: ${colors.begie};
+  color: ${colors.white};
   display: flex;
   gap: 24px;
   position: relative;

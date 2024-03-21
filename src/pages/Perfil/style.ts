@@ -3,6 +3,7 @@ import { HeaderContainer } from '../../components/Header/style'
 import { colors } from '../../style'
 
 export const Container = styled.div`
+
   ${HeaderContainer} {
     padding: 60px 0;
     font-size: 18px;
@@ -18,6 +19,9 @@ export const Container = styled.div`
         padding: 0;
       }
       a {
+        font-size: 18px;
+        font-weight: 900;
+        line-height: 22px;
         width: fit-content;
         color: ${colors.salmon};
       }
@@ -27,7 +31,6 @@ export const Container = styled.div`
       background-image: url('/src/assets/images/italiana.png');
       background-repeat: no-repeat;
       background-size: cover;
-      color: ${colors.white};
     }
   }
   .container {
@@ -42,7 +45,8 @@ export const Button = styled.button`
   border: transparent;
   cursor: pointer;
   color: ${colors.salmon};
-  font-weight: bold;
+  font-size: 18px;
+  font-weight: 900;
   line-height: 22px;
 `
 export const Description = styled.div`
@@ -52,7 +56,7 @@ export const Description = styled.div`
   background-repeat: no-repeat;
   background-size: 100%;
   margin-top: 60px;
-  color: ${colors.begie};
+  color: ${colors.white};
   position: relative;
   .container{
     padding: 24px 0;
