@@ -16,8 +16,10 @@ import { Plate } from '../../models/plate'
 import { useGetRestaurantQuery } from '../../services/api'
 import { useState } from 'react'
 import { useFormik } from "formik"
+import * as Yup from "yup"
 import InputMask from "react-input-mask";
-import FormatPrice from "../../utils/FormatPrice";
+
+
 
 
 export const Perfil = () => {
@@ -27,13 +29,13 @@ export const Perfil = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+
   const [isDisheOpen, setIsDishOpen] = useState(false)
   const [cartOpen, setCartOpen ] = useState(false)
   const [adress, setAdress ] = useState(false)
   const [pay, setPay] = useState(false)
   const [isFinished, setIsFinished] = useState(false)
   const [plate, setPlate] = useState<Plate>()
-  const [responseApi, setResponseApi] = useState('')
 
   function handleClick(item: Plate){
     setIsDishOpen(true)
@@ -54,57 +56,39 @@ export const Perfil = () => {
     setCartOpen(false)
     setPay(false)
   }
-
-  const total: number = itemsCart.reduce((acumulator, currentValue) => {
-    return (acumulator += currentValue.preco)
-  },0);
+  function goToOrderFinished(){
+    setIsFinished(true)
+    setPay(false)
+  }
 
     const form = useFormik({
       initialValues: {
-        quem_ira_receber: 'Lucas Sousa',
-        endereco: 'Rua São Paulo',
-        cidade: 'Baurú',
-        cep: '14350000',
-        numero: '123',
-        complemento: 'Sem complemento',
-        nome_no_cartao: 'Lucas Sousa',
-        numero_do_cartao: '6546-4654-6546-5465',
-        cvv: '123',
-        mes_vencimento: '12',
-        ano_vencimento: '2030',
+        quem_ira_receber: '',
+        endereco: '',
+        cidade: '',
+        cep: '',
+        numero: '',
+        complemento: '',
+        nome_no_cartao: '',
+        numero_do_cartao: '',
+        cvv: '',
+        mes_vencimento: '',
+        ano_vencimento: '',
       },
-      onSubmit: async (values) => {
-        if (form.isValid) {
-          try {
-            const formattedData = formatFormData(form.values, itemsCart);
-            const response = await fetch('https://fake-api-tau.vercel.app/api/efood/checkout', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(formattedData)
-            });
-
-            if (response.status === 201) {
-              const textoResposta = await response.text();
-              const responseData = JSON.parse(textoResposta);
-              setResponseApi(responseData.orderId);
-            } else {
-              alert(`Falha ao enviar o pedido. Status: ${response.status}`);
-            }
-
-            if (!response.ok) {
-              throw new Error('Falha ao enviar o pedido');
-            }
-
-            setIsFinished(true);
-            setPay(false);
-          } catch (error) {
-            console.error('Erro ao enviar o pedido:', error);
-          }
-        } else {
-          form.validateForm();
-        }
+      validationSchema: Yup.object({
+        quem_ira_receber: Yup.string().min(5, "este nome precisa ter pelomenos 5 caracteres.").required("o campo é obrigatorio"),
+        endereco: Yup.string().min(10, "este endereço precisa ter pelomenos 10 caracteres.").required("o campo é obrigatorio"),
+        cidade: Yup.string().min(5, "esta cidade precisa ter pelomenos 5 caracteres.").required("o campo é obrigatorio"),
+        cep: Yup.string().matches(/^[0-9]{5}-[0-9]{3}$/, "cep inválido.").required("o campo é obrigatorio"),
+        numero: Yup.string().min(1, "este número precisa ter pelomenos 1 caracter.").required("o campo é obrigatorio"),
+        nome_no_cartao: Yup.string().min(5, "este nome precisa ter pelomenos 5 caracteres.").required("o campo é obrigatorio"),
+        numero_do_cartao: Yup.string().min(16).matches(/^[0-9]{16}$/, "número do cartão inválido.").required("o campo é obrigatorio"),
+        cvv: Yup.string().matches(/^[0-9]{3}$/, "cvv inválido.").required("o campo é obrigatorio"),
+        mes_vencimento: Yup.string().matches(/^[0-9]{2}$/, "mês de vencimento inválido.").required("o campo é obrigatorio"),
+        ano_vencimento: Yup.string().matches(/^[0-9]{4}$/, "ano de vencimento inválido.").required("o campo é obrigatorio"),
+      }),
+      onSubmit: (values) => {
+        console.log(values)
       },
     })
 
@@ -120,36 +104,6 @@ export const Perfil = () => {
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>, input: string) => {
       const { value } = event.target;
       form.setFieldValue(input, value);
-    };
-
-    const formatFormData = (formValues: typeof form.values, cartItems: Plate[]) => {
-      return {
-        products: cartItems.map(item => ({
-          id: item.id,
-          price: item.preco
-        })),
-        delivery: {
-          receiver: formValues.quem_ira_receber,
-          address: {
-            description: formValues.endereco,
-            city: formValues.cidade,
-            zipCode: formValues.cep,
-            number: Number(formValues.numero),
-            complement: formValues.complemento || ''
-          }
-        },
-        payment: {
-          card: {
-            name: formValues.nome_no_cartao,
-            number: formValues.numero_do_cartao,
-            code: Number(formValues.cvv),
-            expires: {
-              month: Number(formValues.mes_vencimento),
-              year: Number(formValues.ano_vencimento)
-            }
-          }
-        }
-      };
     };
 
   return (
@@ -228,22 +182,19 @@ export const Perfil = () => {
             </ContainerInput>
             <ContainerInput>
               <Label>Numero</Label>
-              <Input  type="text" name="numero" value={form.values.numero} onChange={form.handleChange} onBlur={form.handleBlur}/>
+              <Input  type="number" name="numero" value={form.values.numero} onChange={form.handleChange} onBlur={form.handleBlur}/>
             </ContainerInput>
             </CepNumber>
-            <ContainerInput>
-              <Label>Complemento</Label>
-              <Input  type="text" name="complemento" value={form.values.complemento} onChange={form.handleChange} onBlur={form.handleBlur}/>
-            </ContainerInput>
             <Last>
               <Button type="button" onclick={goToPay}>Continuar com o pagamento</Button>
+
               <Button type="button" onclick={goToCart}>Voltar para o carrinho</Button>
             </Last>
           </ContainerDelivery>
         </Right>}
         {pay && <Right onclick={() => setPay(false)}>
           <ContainerPay>
-            <Title>Pagamento - Valor a pagar R$ <span>{FormatPrice(total)}</span></Title>
+            <Title>Pagamento - Valor a pagar R$ <span>190,90</span></Title>
             <ContainerInput>
               <Label>Nome no cartão</Label>
               <Input  type="text" name="nome_no_cartao" value={form.values.nome_no_cartao} onChange={form.handleChange} onBlur={form.handleBlur}/>
@@ -299,19 +250,19 @@ export const Perfil = () => {
                   value={form.values.ano_vencimento}
                   onChange={(event) => handleChange(event, 'ano_vencimento')}
                   onBlur={() => form.handleBlur}
-                  mask="9999"
+                  mask="99"
                   maskChar={null}
                 />
               </ContainerInput>
             </CepNumber>
             <Last>
-              <Button state={!form.isValid && !form.dirty} type="submit">Finalizar pagamento</Button>
+              <Button onclick={goToOrderFinished} type="submit">Finalizar pagamento</Button>
               <Button type="button" onclick={goToAdress}>Voltar para a edição de endereço</Button>
             </Last>
 
           </ContainerPay>
         </Right> }
-        {isFinished && <Right onclick={() => setIsFinished(false)}><Order orderId={String(responseApi)} backToHome={() =>navigate('/')}/></Right> }
+        {isFinished && <Right onclick={() => setIsFinished(false)}><Order backToHome={() =>navigate('/')}/></Right> }
       </form>
       <Footer />
     </Container>

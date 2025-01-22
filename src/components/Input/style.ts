@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import { colors } from "../../style";
+import InputMask from 'react-input-mask';
 
-export const Container = styled.div`
+
+export const ContainerInput = styled.div`
   margin-bottom: 8px;
   font-size: 14px;
   font-weight: bold;

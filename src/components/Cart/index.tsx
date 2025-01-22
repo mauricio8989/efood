@@ -21,6 +21,7 @@ export const Cart = ({onclick}:Props) => {
 
   return(
     <Container>
+      <Title>Carrinho</Title>
       {itemsCart &&
         itemsCart.map((plate) => (
           <PlateComponent key={plate.id}>
@@ -34,10 +35,13 @@ export const Cart = ({onclick}:Props) => {
           )
         )
       }
-      <Comfirm>
-        <ValueToPay> <span>Valor total</span>{FormatPrice(total)}</ValueToPay>
-        <Button onclick={onclick} >Continuar com a entrega</Button>
-      </Comfirm>
+      {itemsCart.length > 0 ?
+        <Comfirm>
+          <ValueToPay> <span>Valor total</span>{FormatPrice(total)}</ValueToPay>
+          <Button type="button" onclick={onclick} >Continuar com a entrega</Button>
+        </Comfirm>
+        : <Title>Carrinho vazio</Title>
+      }
     </Container>
   )
 }

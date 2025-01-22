@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { colors } from "../../style";
 
-export const Container = styled.form`
+export const Container = styled.div`
   font-size: 14px;
 `
 export const Title = styled.h2`

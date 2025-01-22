@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { colors } from "../../style";
 
+
 export const Container= styled.ul`
   width: 100%;
   color: ${colors.salmon};
@@ -22,6 +23,7 @@ export const PlateComponent = styled.li`
 `
 export const Title = styled.h3`
   font-size: 18px;
+  color: ${colors.begie};;
 `
 export const Price = styled.span`
   margin-top: 16px;

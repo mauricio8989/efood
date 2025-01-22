@@ -39,7 +39,7 @@ export const Container = styled.div`
     gap: 32px;
   }
 `
-export const Button = styled.button`
+export const ButtonCart = styled.button`
   width: fit-content;
   background-color: transparent;
   border: transparent;
@@ -85,3 +85,50 @@ export const Description = styled.div`
     content: '';
   }
 `
+
+export const ContainerDelivery = styled.div`
+  font-size: 14px;
+`
+export const Title = styled.h2`
+  color: ${colors.begie};
+  font-size: 16px;
+  margin-bottom: 16px;
+`
+export const CepNumber = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 34px;
+`
+export const Last = styled.div`
+  margin-top: 24px;
+`
+
+export const ContainerInput = styled.div`
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 8px;
+`
+export const Label = styled.label`
+  color: ${colors.begie};
+
+`
+export const Input = styled.input`
+  width: 100%;
+  margin-top: 8px;
+  color: #000;
+  background-color: ${colors.begie};
+  padding: 8px;
+  border: transparent;
+  font-weight: bold;
+  outline: none;
+`
+export const ContainerPay = styled.div`
+  font-size: 14px;
+`
+export const NumberAndCvv = styled.div`
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 34px;
+`
+

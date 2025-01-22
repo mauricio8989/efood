@@ -25,4 +25,14 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0 auto;
         padding: 80px 0 120px 0;
     }
+    input{
+      width: 100%;
+      margin-top: 8px;
+      color: #000;
+      background-color: ${colors.begie};
+      padding: 8px;
+      border: transparent;
+      font-weight: bold;
+      outline: none;
+  }
 `
