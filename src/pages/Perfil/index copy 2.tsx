@@ -45,33 +45,10 @@ export const Perfil = () => {
     setAdress(false)
     setCartOpen(true)
   }
-  // function goToPay(){
-  //   if(form.values.quem_ira_receber == '' || form.values.endereco == '' || form.values.cidade == '' || form.values.cep == '' || form.values.numero == ''){
-  //     alert('Preencha todos os dados de entrega corretamente!')
-  //   }else{
-  //     setAdress(false)
-  //     setCartOpen(false)
-  //     setPay(true)
-  //   }
-
-  // }
-  function goToPay() {
-    form.validateForm().then((errors) => {
-      if (Object.keys(errors).length > 0) {
-        form.setTouched({
-          quem_ira_receber: true,
-          endereco: true,
-          cidade: true,
-          cep: true,
-          numero: true
-        });
-      }
-      if(Object.keys(errors).length <= 5){
-        setAdress(false)
-        setCartOpen(false)
-        setPay(true)
-      }
-    });
+  function goToPay(){
+    setAdress(false)
+    setCartOpen(false)
+    setPay(true)
   }
   function goToAdress(){
     setAdress(true)
@@ -85,34 +62,64 @@ export const Perfil = () => {
 
     const form = useFormik({
       initialValues: {
-        quem_ira_receber: '',
-        endereco: '',
-        cidade: '',
-        cep: '',
-        numero: '',
-        complemento: '',
-        nome_no_cartao: '',
-        numero_do_cartao: '',
-        cvv: '',
-        mes_vencimento: '',
-        ano_vencimento: '',
+        quem_ira_receber: 'Lucas Sousa',
+        endereco: 'Rua São Paulo',
+        cidade: 'Baurú',
+        cep: '14350000',
+        numero: '123',
+        complemento: 'Sem complemento',
+        nome_no_cartao: 'Lucas Sousa',
+        numero_do_cartao: '6546-4654-6546-5465',
+        cvv: '123',
+        mes_vencimento: '12',
+        ano_vencimento: '2030',
       },
       validationSchema: Yup.object({
         quem_ira_receber: Yup.string().required("Campo obrigatório"),
         endereco: Yup.string().required("Campo obrigatório"),
         cidade: Yup.string().required("Campo obrigatório"),
-        cep: Yup.string().min(8,"O campo precisa ter 8 caractéres").max(9, "O campo precisa ter 8 caractéres").matches(/^\d{5}-\d{3}$/, "CEP inválido").required("Campo obrigatório"),
+        cep: Yup.string().matches(/^\d{5}-\d{3}$/, "CEP inválido").required("Campo obrigatório"),
         numero: Yup.number().required("Campo obrigatório").positive("Número inválido"),
         complemento: Yup.string(),
         nome_no_cartao: Yup.string().required("Campo obrigatório"),
-        numero_do_cartao: Yup.string().min(19, "O campo precisa ter 16 caractéres").max(19, "O campo precisa ter 16 caractéres").matches(/^[0-9]{4}[-\s]?[0-9]{4}[-\s]?[0-9]{4}[-\s]?[0-9]{4}$/, "Número do cartão inválido").required("Campo obrigatório"),
+        numero_do_cartao: Yup.string().matches(/^\d{16}$/, "Número do cartão inválido").required("Campo obrigatório"),
         cvv: Yup.string().matches(/^\d{3}$/, "CVV inválido").required("Campo obrigatório"),
-        mes_vencimento: Yup.string().min(2, "O campo precisa ter 2 caractéres").max(2, "O campo precisa ter 4 caractéres").matches(/^\d{2}$/, "Mês inválido").required("Campo obrigatório"),
-        ano_vencimento: Yup.string().min(4, "O campo precisa ter 4 caractéres").max(4, "O campo precisa ter 4 caractéres").matches(/^\d{4}$/, "Ano inválido").required("Campo obrigatório"),
+        mes_vencimento: Yup.string().matches(/^\d{2}$/, "Mês inválido").required("Campo obrigatório"),
+        ano_vencimento: Yup.string().matches(/^\d{4}$/, "Ano inválido").required("Campo obrigatório"),
       }),
-      onSubmit: function(){
+      onSubmit: async (values) => {
+        if (form.isValid) {
+          try {
+            const formattedData = formatFormData(form.values, itemsCart);
+            const response = await fetch('https://fake-api-tau.vercel.app/api/efood/checkout', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(formattedData)
+            });
 
-      }
+            if (response.status === 201) {
+              const textoResposta = await response.text();
+              const responseData = JSON.parse(textoResposta);
+              setResponseApi(responseData.orderId);
+            } else {
+              alert(`Falha ao enviar o pedido. Status: ${response.status}`);
+            }
+
+            if (!response.ok) {
+              throw new Error('Falha ao enviar o pedido');
+            }
+
+            setIsFinished(true);
+            setPay(false);
+          } catch (error) {
+            console.error('Erro ao enviar o pedido:', error);
+          }
+        } else {
+          form.validateForm();
+        }
+      },
     })
 
     const checkInputHasError = (fieldname: string) => {
@@ -170,13 +177,6 @@ export const Perfil = () => {
           },
           body: JSON.stringify(formattedData)
         });
-        if (response.status === 201) {
-          const textoResposta = await response.text();
-          const responseData = JSON.parse(textoResposta);
-          setResponseApi(responseData.orderId);
-        } else {
-          alert(`Falha ao enviar o pedido. Status: ${response.status}`);
-        }
 
         if (!response.ok) {
           throw new Error('Falha ao enviar o pedido');
@@ -186,28 +186,12 @@ export const Perfil = () => {
         setPay(false);
       } catch (error) {
         console.error('Erro ao enviar o pedido:', error);
+        // Aqui você pode adicionar uma lógica para mostrar uma mensagem de erro ao usuário
       }
     } else {
       form.validateForm();
     }
   };
-  const sendOrder = () => {
-    form.validateForm().then((errors) => {
-      if (Object.keys(errors).length > 0) {
-        form.setTouched({
-          nome_no_cartao: true,
-          numero_do_cartao: true,
-          cvv: true,
-          mes_vencimento: true,
-          ano_vencimento: true
-        });
-      }
-      if(Object.keys(errors).length === 0){
-        goToOrderFinished()
-      }
-    });
-
-  }
 
   return (
     <Container>
@@ -252,30 +236,21 @@ export const Perfil = () => {
           />
       }
       {cartOpen &&<Right onclick={() => setCartOpen(false)}><Cart onclick={goToAdress}/></Right>}
-      <form action="POST">
+      <form action="Post"  onSubmit={form.handleSubmit}>
         {adress && <Right onclick={() => setAdress(false)}>
           <ContainerDelivery>
             <Title>Entrega</Title>
             <ContainerInput>
               <Label>Quem irá receber</Label>
               <Input  type="text" name="quem_ira_receber" value={form.values.quem_ira_receber} onChange={form.handleChange} onBlur={form.handleBlur}/>
-              {form.touched.quem_ira_receber && form.errors.quem_ira_receber &&
-                <span className="error-message">{form.errors.quem_ira_receber}</span>
-              }
             </ContainerInput>
             <ContainerInput>
               <Label>Endereço</Label>
               <Input  type="text" name="endereco" value={form.values.endereco} onChange={form.handleChange} onBlur={form.handleBlur}/>
-              {form.touched.quem_ira_receber && form.errors.quem_ira_receber &&
-                <span className="error-message">{form.errors.endereco}</span>
-              }
             </ContainerInput>
             <ContainerInput>
               <Label>Cidade</Label>
               <Input  type="text" name="cidade" value={form.values.cidade} onChange={form.handleChange} onBlur={form.handleBlur}/>
-              {form.touched.quem_ira_receber && form.errors.quem_ira_receber &&
-                <span className="error-message">{form.errors.cidade}</span>
-              }
             </ContainerInput>
             <CepNumber>
             <ContainerInput>
@@ -291,16 +266,10 @@ export const Perfil = () => {
                 mask="99999-999"
                 maskChar={null}
               />
-              {form.touched.cep && form.errors.cep &&
-                <span className="error-message">{form.errors.cep}</span>
-              }
             </ContainerInput>
             <ContainerInput>
               <Label>Numero</Label>
               <Input  type="text" name="numero" value={form.values.numero} onChange={form.handleChange} onBlur={form.handleBlur}/>
-              {form.touched.numero && form.errors.numero &&
-                <span className="error-message">{form.errors.numero}</span>
-              }
             </ContainerInput>
             </CepNumber>
             <ContainerInput>
@@ -319,9 +288,6 @@ export const Perfil = () => {
             <ContainerInput>
               <Label>Nome no cartão</Label>
               <Input  type="text" name="nome_no_cartao" value={form.values.nome_no_cartao} onChange={form.handleChange} onBlur={form.handleBlur}/>
-              {form.touched.nome_no_cartao && form.errors.nome_no_cartao &&
-                <span className="error-message">{form.errors.nome_no_cartao}</span>
-              }
             </ContainerInput>
             <NumberAndCvv>
               <ContainerInput>
@@ -336,9 +302,6 @@ export const Perfil = () => {
                   mask="9999-9999-9999-9999"
                   maskChar={null}
                 />
-                {form.touched.numero_do_cartao && form.errors.numero_do_cartao &&
-                  <span className="error-message">{form.errors.numero_do_cartao}</span>
-                }
               </ContainerInput>
               <ContainerInput>
                 <Label htmlFor='cvv'>CVV</Label>
@@ -352,9 +315,6 @@ export const Perfil = () => {
                   mask="999"
                   maskChar={null}
                 />
-                {form.touched.cvv && form.errors.cvv &&
-                  <span className="error-message">{form.errors.cvv}</span>
-                }
               </ContainerInput>
             </NumberAndCvv>
             <CepNumber>
@@ -370,9 +330,6 @@ export const Perfil = () => {
                   mask="99"
                   maskChar={null}
                 />
-                {form.touched.mes_vencimento && form.errors.mes_vencimento &&
-                  <span className="error-message">{form.errors.mes_vencimento}</span>
-                }
               </ContainerInput>
               <ContainerInput>
                 <Label htmlFor='ano'>Ano de vencimento</Label>
@@ -386,13 +343,10 @@ export const Perfil = () => {
                   mask="9999"
                   maskChar={null}
                 />
-                {form.touched.ano_vencimento && form.errors.ano_vencimento &&
-                  <span className="error-message">{form.errors.ano_vencimento}</span>
-                }
               </ContainerInput>
             </CepNumber>
             <Last>
-              <Button type="button" onclick={sendOrder}>Finalizar pagamento</Button>
+              <Button state={!form.isValid && !form.dirty} type="submit">Finalizar pagamento</Button>
               <Button type="button" onclick={goToAdress}>Voltar para a edição de endereço</Button>
             </Last>
 

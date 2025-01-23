@@ -1,5 +1,4 @@
 import { ContainerInput, Label, InputContainer } from "./style"
-import InputMask from 'react-input-mask';
 
 type Props = {
   label: string

@@ -108,6 +108,10 @@ export const ContainerInput = styled.div`
   font-size: 14px;
   font-weight: bold;
   margin-bottom: 8px;
+  .error-message{
+    color: ${colors.begie};
+    font-size: 10px;
+  }
 `
 export const Label = styled.label`
   color: ${colors.begie};
