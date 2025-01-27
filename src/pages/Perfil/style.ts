@@ -11,7 +11,7 @@ export const Container = styled.div`
     padding-bottom: 0;
     gap: 0;
     .links {
-      width: 100%;
+      width: 100vw;
       .container {
         display: flex;
         align-items: center;
@@ -38,6 +38,32 @@ export const Container = styled.div`
     grid-template-columns: 1fr 1fr 1fr;
     gap: 32px;
   }
+  @media (max-width: 1052px){
+    .links{
+      .container{
+        display: flex;
+        flex-direction: column;
+      }
+    }
+    div{
+      .container{
+        padding: 0 20px
+        
+      }
+    }
+    #container-plates{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 10px
+    }
+  }
+  @media (max-width: 680px){
+    #container-plates{
+      display: grid;
+      grid-template-columns: 1fr;
+      padding: 10px
+    }
+}
 `
 export const ButtonCart = styled.button`
   width: fit-content;
@@ -50,7 +76,7 @@ export const ButtonCart = styled.button`
   line-height: 22px;
 `
 export const Description = styled.div`
-  max-width: 100vw;
+  max-width: 100%;
   width: 100%;
   height: 280px;
   background-repeat: no-repeat;

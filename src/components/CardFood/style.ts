@@ -2,7 +2,8 @@ import styled from 'styled-components'
 import { colors } from '../../style'
 
 export const Container = styled.div`
-  width: 100%;
+  max-width: 320px;
+  margin: auto;
   padding: 8px;
   background-color: ${colors.salmon};
   display: grid;
@@ -11,6 +12,7 @@ export const Container = styled.div`
     width: 100%;
     max-height: 167px;
   }
+  
 `
 export const Title = styled.h3`
   font-size: 18px;

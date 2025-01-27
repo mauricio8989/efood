@@ -45,16 +45,7 @@ export const Perfil = () => {
     setAdress(false)
     setCartOpen(true)
   }
-  // function goToPay(){
-  //   if(form.values.quem_ira_receber == '' || form.values.endereco == '' || form.values.cidade == '' || form.values.cep == '' || form.values.numero == ''){
-  //     alert('Preencha todos os dados de entrega corretamente!')
-  //   }else{
-  //     setAdress(false)
-  //     setCartOpen(false)
-  //     setPay(true)
-  //   }
 
-  // }
   function goToPay() {
     form.validateForm().then((errors) => {
       if (Object.keys(errors).length > 0) {
@@ -228,7 +219,7 @@ export const Perfil = () => {
           </div>
         </Description>
       </Header>
-      <div className="container">
+      <div className="container" id="container-plates">
         {restaurant && restaurant.cardapio.map(plate =>(
           <CardFood
             key={plate.id}

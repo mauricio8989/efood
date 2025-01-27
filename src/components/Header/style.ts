@@ -3,6 +3,7 @@ import { colors } from '../../style'
 import fundo from '../../assets/images/fundo.png'
 
 export const HeaderContainer = styled.header`
+  max-width: 100vw !important;
   background-image: url(${fundo});
   background-repeat: no-repeat;
   background-size: cover;
@@ -15,10 +16,13 @@ export const HeaderContainer = styled.header`
   position: relative;
   gap: 138px;
   h1 {
-    /* margin-top: 138px; */
-    font-size: 36px;
+    max-width: 100vw;
+    font-size: 2rem;
     line-height: 46px;
     width: 540px;
     text-align: center;
+  }
+  @media (max-width: 1032px){
+    gap: 50px;
   }
 `

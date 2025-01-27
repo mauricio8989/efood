@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { colors } from '../../style'
 
 export const Container = styled.div`
-  width: 472px;
+  max-width: 472px;
   background-color: #fff;
   color: ${colors.salmon};
   display: flex;
@@ -19,7 +19,8 @@ export const Container = styled.div`
   }
 
   img {
-    height: 218px;
+    max-width: 100%;
+    max-height: 218px;
     object-fit: cover;
   }
 `

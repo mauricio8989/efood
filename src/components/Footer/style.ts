@@ -18,7 +18,7 @@ export const Link = styled.a`
   text-decoration: none;
 `
 export const Description = styled.p`
-  width: 480px;
+  max-width: 480px;
   color: ${colors.salmon};
   font-size: 10px;
   line-height: 12px;
